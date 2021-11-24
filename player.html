@@ -5,15 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="player.css">
+
 </head>
 <body>
     <div></div>
-    <div>
-        <button>
+    <div class="playerButtons">
+        <button class="unMute">
+            <i class="fas fa-volume-up"></i>
+        </button>
+        <button class="mute">
+            <i class="fas fa-volume-mute"></i>
+        </button>
+        <button class="play" onclick="play()">
             <i class="fas fa-play"></i>
+        
+        </button>
+        <button class="pause" onclick="pause()">
+            <i class="fas fa-pause"></i>
         </button>
     </div>
     
 </body>
 </html>
+<script src="https://kit.fontawesome.com/c82e60d9b8.js" crossorigin="anonymous"></script>
+
 <script src="player.js"></script>

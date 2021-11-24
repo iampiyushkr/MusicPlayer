@@ -1,0 +1,56 @@
+
+.playerButtons{
+    display: inline-flex;
+}
+.play{
+    background-color: white;
+    border: 1px solid #4bb4ca;
+    border-radius: 10px;
+    width: 80px;
+    height: 50px;
+
+}
+.play i{
+    color: #4bb4ca;
+    font-size: 30px;
+}
+.pause{
+    background-color: white;
+    border: 1px solid #4bb4ca;
+    border-radius: 10px;
+    width: 80px;
+    height: 50px;
+    display: none;
+
+}
+.pause i{
+    color: #4bb4ca;
+    font-size: 30px;
+}
+.unMute{
+    background-color: white;
+    border: 1px solid #4bb4ca;
+    border-radius: 10px;
+    width: 60px;
+    height: 30px;
+    
+
+}
+.unMute i{
+    color: #4bb4ca;
+    font-size: 20px;
+}
+.mute{
+    background-color: white;
+    border: 1px solid #4bb4ca;
+    border-radius: 10px;
+    width: 60px;
+    height: 30px;
+    display: none;
+    
+
+}
+.mute i{
+    color: #4bb4ca;
+    font-size: 20px;
+}
