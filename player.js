@@ -3,9 +3,10 @@
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
 
+
 const heights = [30,60,25,27,36,43,26,28,48,50,55,35];
 
-const y = [15,27,24,35,10,12,32,19];
+const y = [35,47,34,55,30,32,52,39];
 
 const height = ()=>{
     return heights[Math.floor(Math.random()*(heights.length-1))];
@@ -41,9 +42,27 @@ for(let i=0;i<=149;i++){
 }
 }
 randomTrack()
-rect(40,2,20,5,"#0eb422")
+rect(40,2,20,5,"#0eb422","introduction")
 straight(49,6,1,30,"#0eb422")
-circle(49.5, 40, 1, 0,"#0eb422")
+circle(49.5, 36, 1, 0,"#0eb422")
+
+rect(70,3,20,5,"#1de18d","one_six")
+straight(79,6,1,30,"#1de18d")
+circle(79.4, 36, 1, 0,"#1de18d")
+
+rect(220,7,40,5,"#926a6b","Report Building-Empathy")
+straight(257,10,1,26,"#926a6b")
+circle(257.4, 36, 1, 0,"#926a6b")
+
+rect(230,1,40,5,"#6aac4b","Report Building-Energy")
+straight(267,6,1,30,"#6aac4b")
+circle(267.4, 36, 1, 0,"#6aac4b")
+
+rect(230,15,20,5,"#1b00bb","Profile")
+straight(247,20,1,16,"#1b00bb")
+circle(247.4, 36, 1, 0,"#1b00bb")
+
+
 
 console.log(heightLength,yLength)
 
@@ -189,6 +208,28 @@ function track1(xaxis){
 
     console.log(window.innerWidth)
     context.clearRect(0,0, 1200, 400);
+
+    rect(40,2,20,5,"#0eb422","introduction")
+straight(49,6,1,30,"#0eb422")
+circle(49.5, 36, 1, 0,"#0eb422")
+
+rect(70,3,20,5,"#1de18d","one_six")
+straight(79,6,1,30,"#1de18d")
+circle(79.4, 36, 1, 0,"#1de18d")
+
+rect(220,7,40,5,"#926a6b","Report Building-Empathy")
+straight(257,10,1,26,"#926a6b")
+circle(257.4, 36, 1, 0,"#926a6b")
+
+rect(230,1,40,5,"#6aac4b","Report Building-Energy")
+straight(267,6,1,30,"#6aac4b")
+circle(267.4, 36, 1, 0,"#6aac4b")
+
+rect(230,15,20,5,"#1b00bb","Profile")
+straight(247,20,1,16,"#1b00bb")
+circle(247.4, 36, 1, 0,"#1b00bb")
+
+
         let x2=5;
         for(let i=0;i<=149;i++){
             context.fillStyle="gray"
@@ -237,14 +278,14 @@ function track1(xaxis){
 
 }
 
-function rect(x,y,w,h,bg){
+function rect(x,y,w,h,bg,title){
     context.fillStyle=bg;
     context.beginPath();
     context.fillRect(x,y,w,h);
     context.closePath();
     context.fillStyle = "white";
-      context.font = "4px sans-serif";
-      context.fillText("introduction", x,y+3 );
+      context.font = "4px solid sans-serif";
+      context.fillText(title, x,y+3 );
 }
 function straight(x,y,w,h,bg){
     context.fillStyle=bg;
