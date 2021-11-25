@@ -9,12 +9,14 @@
 
 </head>
 <body>
-    <div></div>
+    <div id="tractDiv">
+        <canvas id="canvas"></canvas>
+    </div>
     <div class="playerButtons">
-        <button class="unMute">
+        <button class="unMute" onclick="Unmute()">
             <i class="fas fa-volume-up"></i>
         </button>
-        <button class="mute">
+        <button class="mute" onclick="Mute()">
             <i class="fas fa-volume-mute"></i>
         </button>
         <button class="play" onclick="play()">

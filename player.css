@@ -1,4 +1,19 @@
 
+#tractDiv{
+    width:90% ;
+    height: 450px;
+    overflow: hidden;
+    margin: auto;
+    
+}
+ #canvas{
+    width: 95%;
+    
+    
+}
+
+
+/* .............................player buttons css....................... */
 .playerButtons{
     display: inline-flex;
 }
