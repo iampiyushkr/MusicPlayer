@@ -133,6 +133,7 @@ function pause(){
     playSong.style.display="block"
     audio.pause()
     clearInterval(timmer)
+    clearInterval(timmer2)
     
 
 }
@@ -150,4 +151,69 @@ function Unmute(){
 
 for(let i=0;i<145;i++){
     context.fillStyle="green"
+}
+
+canvas.addEventListener("click", getCoordinates)
+function getCoordinates(e){
+    const x = e.clientX-14;
+    const y = e.clientY-27;
+    clearInterval(timmer2)
+    audio.currentTime=(((x/10))/149)*audio.duration;
+    playSong.style.display="none"
+    pauseSong.style.display="block"
+    audio.play()
+    console.log("x:" + x + " "+ "y:" + y);
+   track1(x)
+}
+
+
+var timmer2;
+function track1(xaxis){
+    
+        let x2=5;
+        for(let i=0;i<800/5.4;i++){
+            context.fillStyle="gray"
+            console.log("i",yLength[i],heightLength[i])
+            context.fillRect(x2,yLength[i],1,heightLength[i])
+            x2+=2
+        }
+        
+        let x3=5;
+        for(let i=0;i<xaxis/10;i++){
+            context.fillStyle="red"
+            console.log("i",yLength[i],heightLength[i])
+            context.fillRect(x3,yLength[i],1,heightLength[i])
+            x3+=2
+        }
+        var z1=Math.floor(xaxis/10)+1
+        var x5=x3
+
+        timmer2=setInterval(()=>{
+
+            context.fillStyle = "red";
+           
+            context.fillRect(x5,yLength[z1],1,heightLength[z1])
+           
+            x5+=2;
+            duration+=((audio.duration)/1200)*8000
+            console.log("z1",yLength[z1],heightLength[z1])
+            z=z1+1;
+            x=x5;
+            if(z1==149){
+               
+                z=-1;
+                x=5;
+                duration=0;
+                clearInterval(timmer2)
+                playback=true;
+                trackPlay=false
+                audio.currentTime=0;
+                pause()
+            }
+            z1++;
+        },((audio.duration)/1200)*8000)
+
+
+    
+
 }
