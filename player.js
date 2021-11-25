@@ -25,6 +25,7 @@ function Wave(a){
 let heightLength=[];
 let yLength=[]
 
+function randomTrack(){
 let x1=5
 for(let i=0;i<800/5.4;i++){
     context.fillStyle="gray"
@@ -36,36 +37,64 @@ for(let i=0;i<800/5.4;i++){
     
     x1+=2;
 }
+}
+randomTrack()
+
+console.log(heightLength,yLength)
 
 
+let x=5;
+var timmer;
 
-
-// let x=5;
-// var timmer;
-
-// function track(){
-
-//     let duration=0
+let z=0;
+let duration=0;
+let playback=false;
+let trackPlay=true;
+function track(){
     
-//         timmer=setInterval(()=>{
-//          context.fillStyle = "red";
-//             let ran = height();
-//             let ran1 = yIndex();
-//             context.fillRect(x,ran1,1,ran)
-//             console.log(audio.duration)
-//             x+=2;
-//             duration+=((audio.duration)/1200)*8000
-//             if(duration>=(audio.duration)*1000){
-//                 pause()
-//                 clearInterval(timmer)
-//             }
-//         },((audio.duration)/1200)*8000)
+    if(playback){
+        var x2=5;
+        for(let i=0;i<800/5.4;i++){
+            context.fillStyle="gray"
+            console.log("i",yLength[i],heightLength[i])
+            context.fillRect(x2,yLength[i],1,heightLength[i])
+            x2+=2
+        }
+        playback=false
+        trackPlay=true
+    }
+   
+    
+    if(trackPlay){
+   
+        timmer=setInterval(()=>{
+         context.fillStyle = "red";
+           
+            context.fillRect(x,yLength[z],1,heightLength[z])
+           
+            x+=2;
+            duration+=((audio.duration)/1200)*8000
+            console.log("z",yLength[z],heightLength[z])
+            if(z==149){
+               
+                z=-1;
+                x=5;
+                duration=0;
+                clearInterval(timmer)
+                playback=true;
+                trackPlay=false
+                audio.currentTime=0;
+                pause()
+            }
+            z++;
+        },((audio.duration)/1200)*8000)
+    }
         
         
         
     
     
-// }
+}
 
 
 
