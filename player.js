@@ -1,22 +1,22 @@
 //.............audio track..................
 
-const canvas = document.getElementById("canvas");
+const canvas = document.getElementById("canvas");      //getting canvas tag refrence
 const context = canvas.getContext("2d");
 
 
-const heights = [30,60,25,27,36,43,26,28,48,50,55,35];
+const heights = [30,60,25,27,36,43,26,28,48,50,55,35];    //taking random height of canvas rectangle in array
 
-const y = [35,47,34,55,30,32,52,39];
+const y = [35,47,34,55,30,32,52,39];                       //taking random distance from y-axis of canvas rectangle in array
 
 const height = ()=>{
-    return heights[Math.floor(Math.random()*(heights.length-1))];
+    return heights[Math.floor(Math.random()*(heights.length-1))];   //choosing random height from height array for canvas rectangle.
 }
 
-const yIndex = ()=>{
+const yIndex = ()=>{                                                //choosing random distance from y-axis from y array for canvas rectangle.
      return y[Math.floor(Math.random()*(y.length-1))];
 }
 
-function Wave(a){
+function Wave(a){                                                   //calling track function for playing track
     
    track()
     
@@ -25,13 +25,14 @@ function Wave(a){
 
 
 
-let heightLength=[];
+let heightLength=[];                                                                                    
 let yLength=[]
 
 function randomTrack(){
 let x1=5
-for(let i=0;i<=149;i++){
-    context.fillStyle="gray"
+for(let i=0;i<=149;i++){                                             //creating some random track and putting their height and y-axis distance in empty array of heightLength and yLength by which i can make same track letter. 
+                                                                                
+    context.fillStyle="gray"                                                    
     let ran = height();
     heightLength.push(ran)
     let ran1 = yIndex();
@@ -42,7 +43,9 @@ for(let i=0;i<=149;i++){
 }
 }
 randomTrack()
-rect(40,2,20,5,"#0eb422","introduction")
+
+//...........................................making sticky.................................
+rect(40,2,20,5,"#0eb422","introduction")                    
 straight(49,6,1,30,"#0eb422")
 circle(49.5, 36, 1, 0,"#0eb422")
 
@@ -64,8 +67,9 @@ circle(247.4, 36, 1, 0,"#1b00bb")
 
 
 
-console.log(heightLength,yLength)
 
+
+//................................play song and filling canvas rectangle according to the audio track........................
 
 var x=5;
 var timmer;
@@ -74,7 +78,7 @@ var z=0;
 var duration=0;
 var playback=false;
 var trackPlay=true;
-function track(){
+function track(){                                                         //in this function i have done the implementation of track according to the song length.
     console.log("asasasasa",audio.duration)
 
     if(playback){
@@ -124,19 +128,19 @@ function track(){
 
 
 
-
-let audio=document.createElement("audio")
-let playSong=document.querySelector(".play") 
-let pauseSong=document.querySelector(".pause") 
-let mute=document.querySelector(".mute")
-let unMute=document.querySelector(".unMute")
+//............................audio functionality.............................
+let audio=document.createElement("audio")                               //creating audo tag
+let playSong=document.querySelector(".play")                            //getting refrence of play button
+let pauseSong=document.querySelector(".pause")                          //getting rafrence of pause btton
+let mute=document.querySelector(".mute")                                //getting refrence of mute button
+let unMute=document.querySelector(".unMute")                             //getting refrence of unmute button
 
 
 
 
 let songs=["music/song1.mp3"]
 
- function audioTrack(){
+ function audioTrack(){                                                 //loading song in the audio tag.
     audio.src=`music/song1.mp3`;
     audio.load();
    
@@ -175,41 +179,43 @@ function Unmute(){
     audio.volume=0;
 }
 
-for(let i=0;i<145;i++){
-    context.fillStyle="green"
-}
+// for(let i=0;i<145;i++){
+//     context.fillStyle="green"
+// }
 
-canvas.addEventListener("click", getCoordinates)
-function getCoordinates(e){
+///............implementation of playing audio according to selecting bar.............................
+
+canvas.addEventListener("click", getCoordinates)                
+function getCoordinates(e){                                         //finding the value of x and y axis according to click on canvas
     const x = e.clientX-14;
     const y = e.clientY-27;
     clearInterval(timmer2)
     if(window.innerWidth>1300){
         var width=window.innerWidth-240;
     }else{
-        var width=window.innerWidth-220;
+        var width=window.innerWidth-220;                           //calculating value for playing audio according to selected bar;
     }
     audio.currentTime=((((x-80)/(width/149)))/149)*audio.duration;
     playSong.style.display="none"
     pauseSong.style.display="block"
     audio.play()
-    console.log("x:" + x + " "+ "y:" + y);
-   track1(x-80)
+    
+   track1(x-80)                                                             
 }
 
 
 var timmer2;
-function track1(xaxis){
+function track1(xaxis){                                               //implementing the functionality of playing audio according according to the selected bar
     if(window.innerWidth>1300){
         var width=window.innerWidth-240;
     }else{
         var width=window.innerWidth-220;
     }
 
-    console.log(window.innerWidth)
-    context.clearRect(0,0, 1200, 400);
+    
+    context.clearRect(0,0, 1200, 400);                  //clearing old canvas rectangle 
 
-    rect(40,2,20,5,"#0eb422","introduction")
+    rect(40,2,20,5,"#0eb422","introduction")            //creating new one along with sticky
 straight(49,6,1,30,"#0eb422")
 circle(49.5, 36, 1, 0,"#0eb422")
 
@@ -239,7 +245,7 @@ circle(247.4, 36, 1, 0,"#1b00bb")
         }
         
         let x3=5;
-        for(let i=0;i<xaxis/(width/149);i++){
+        for(let i=0;i<xaxis/(width/149);i++){           //filling color till the selected bar
             context.fillStyle="red"
            
             context.fillRect(x3,yLength[i],1,heightLength[i])
@@ -248,7 +254,7 @@ circle(247.4, 36, 1, 0,"#1b00bb")
         var z1=Math.floor(xaxis/(width/149))+1
         var x5=x3
 
-        timmer2=setInterval(()=>{
+        timmer2=setInterval(()=>{                       //and now playing song and filling color after the selected bar according to the duration of the audio 
 
             context.fillStyle = "red";
            
@@ -277,6 +283,8 @@ circle(247.4, 36, 1, 0,"#1b00bb")
     
 
 }
+
+//........these are the function for sticky..............................
 
 function rect(x,y,w,h,bg,title){
     context.fillStyle=bg;
